@@ -1,6 +1,6 @@
 # User Authenticaion
 
-user_auth is user details service which provides APIs using express and MySQL
+user_auth is user authentication service which provides APIs using express and MySQL. By which we can retrive, update and add user credentials.
 
 ## Getting Started
 
