@@ -16,7 +16,7 @@ exports.signup = (req, res) => {
     password: bcrypt.hashSync(req.body.password, 8),
   }).then(function (users) {
     if (users) {
-      res.send(users);
+      res.status(200).send(users);
     } else {
       res.status(400).send("Error in creating new record");
     }
@@ -84,9 +84,17 @@ exports.remove = (req, res) => {
       where: {
         username: req.body.username,
       },
-    }).catch((err) => {
-      res.status(500).send({ message: err.message });
-    });
+    })
+      .then((user) => {
+        if (!user) {
+          return res.status(400).send({ message: "Fail" });
+        } else {
+          return res.status(200).send({ message: "Success" });
+        }
+      })
+      .catch((err) => {
+        res.status(500).send({ message: err.message });
+      });
   });
 };
 
