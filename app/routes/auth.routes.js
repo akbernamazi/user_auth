@@ -23,5 +23,9 @@ module.exports = function (app) {
     [authJwt.verifyToken],
     controller.remove
   );
-  app.put("/api/auth/update", [authJwt.verifyToken], controller.update);
+  app.put(
+    "/api/auth/update_password",
+    [authJwt.verifyToken],
+    controller.update
+  );
 };

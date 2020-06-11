@@ -110,7 +110,7 @@ exports.update = (req, res) => {
       }
 
       var passwordIsValid = bcrypt.compareSync(
-        req.body.opassword,
+        req.body.oldpassword,
         user.password
       );
 
@@ -120,7 +120,7 @@ exports.update = (req, res) => {
           message: "Invalid Password!",
         });
       }
-      (req.body.password = bcrypt.hashSync(req.body.password, 8)),
+      (req.body.password = bcrypt.hashSync(req.body.newpassword, 8)),
         User.update(req.body, { where: { username: req.body.username } });
       res.status(200).send("Success");
     })
