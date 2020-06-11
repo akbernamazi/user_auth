@@ -18,6 +18,10 @@ module.exports = function (app) {
 
   app.post("/api/auth/signin", controller.signin);
 
-  app.delete("/api/auth/del", [authJwt.verifyToken], controller.remove);
+  app.delete(
+    "/api/auth/delete_account",
+    [authJwt.verifyToken],
+    controller.remove
+  );
   app.put("/api/auth/update", [authJwt.verifyToken], controller.update);
 };
