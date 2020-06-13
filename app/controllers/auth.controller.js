@@ -25,7 +25,7 @@ exports.signup = (req, res) => {
 };
 
 exports.verify = (req, res) => {
-  res.status(200).send({ message: "Success" });
+  res.status(200).send({ uid: req.userId });
 };
 
 exports.signin = (req, res) => {
@@ -72,6 +72,7 @@ exports.remove = (req, res) => {
   User.findOne({
     where: {
       username: req.body.username,
+      id: req.body.uid,
     },
   }).then((user) => {
     if (!user) {
@@ -105,9 +106,11 @@ exports.remove = (req, res) => {
 };
 
 exports.update = (req, res) => {
+  console.log(req.body.uid);
   User.findOne({
     where: {
       username: req.body.username,
+      id: req.body.uid,
     },
   })
     .then((user) => {

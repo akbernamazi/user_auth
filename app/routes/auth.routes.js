@@ -17,7 +17,7 @@ module.exports = function (app) {
   );
 
   app.post("/api/auth/signin", controller.signin);
-  app.post("/verify", [authJwt.verifyToken]);
+  app.post("/verify", [authJwt.verifyToken], controller.verify);
   app.delete("/api/auth/delete_account", controller.remove);
   app.put("/api/auth/update_password", controller.update);
 };
