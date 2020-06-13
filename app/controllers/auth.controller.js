@@ -9,6 +9,7 @@ var bcrypt = require("bcryptjs");
 
 exports.signup = (req, res) => {
   // Save User to Database
+  console.log(req.body);
   User.create({
     username: req.body.username,
     email: req.body.email,
@@ -18,9 +19,13 @@ exports.signup = (req, res) => {
     if (users) {
       res.status(200).send(users);
     } else {
-      res.status(400).send("Error in creating new record");
+      res.status(400).send({ message: "Error in creating new record" });
     }
   });
+};
+
+exports.verify = (req, res) => {
+  res.status(200).send({ message: "Success" });
 };
 
 exports.signin = (req, res) => {
@@ -63,6 +68,7 @@ exports.signin = (req, res) => {
 };
 
 exports.remove = (req, res) => {
+  console.log(req.body);
   User.findOne({
     where: {
       username: req.body.username,
