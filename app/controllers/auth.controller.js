@@ -9,7 +9,7 @@ var bcrypt = require("bcryptjs");
 
 exports.signup = (req, res) => {
   // Save User to Database
-  console.log(req.body);
+  // console.log(req.body);
   User.create({
     username: req.body.username,
     email: req.body.email,
@@ -68,7 +68,7 @@ exports.signin = (req, res) => {
 };
 
 exports.remove = (req, res) => {
-  console.log(req.body);
+  // console.log(req.body);
   User.findOne({
     where: {
       username: req.body.username,
@@ -106,7 +106,7 @@ exports.remove = (req, res) => {
 };
 
 exports.update = (req, res) => {
-  console.log(req.body.uid);
+  // console.log(req.body.uid);
   User.findOne({
     where: {
       username: req.body.username,
@@ -115,7 +115,7 @@ exports.update = (req, res) => {
   })
     .then((user) => {
       if (!user) {
-        return res.status(404).send({ message: "User Not found." });
+        return res.status(404).send({ message: "Error!!" });
       }
 
       var passwordIsValid = bcrypt.compareSync(
