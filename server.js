@@ -5,7 +5,7 @@ const cors = require("cors");
 const app = express();
 
 var corsOptions = {
-  origin: "http://localhost:8081"
+  origin: "http://localhost:8081",
 };
 app.use(cors(corsOptions));
 
@@ -19,8 +19,8 @@ const db = require("./app/models");
 // To synchronise
 db.sequelize.sync();
 
-require('./app/routes/auth.routes')(app);
-require('./app/routes/user.routes')(app);
+require("./app/routes/auth.routes")(app);
+require("./app/routes/user.routes")(app);
 // simple route
 app.get("/", (req, res) => {
   res.json({ message: "Welcome to Rent A Block." });
